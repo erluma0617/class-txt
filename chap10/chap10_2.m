@@ -4,6 +4,15 @@ close all;
 global x y
 
 M=2;
+if M==1
+    cityfile = fopen( 'city8.txt', 'rt' );
+    cities = fscanf( cityfile, '%f %f',[ 2,inf] );
+    fclose(cityfile);
+    t=8+1;   %Number of Cities is t-1
+    s=30;    %Number of Samples
+    G=50;
+    c=10;
+elseif M==2
     cityfile = fopen( 'city30.txt', 'rt' );
     cities = fscanf( cityfile, '%f %f',[ 2,inf] );
     fclose(cityfile);
@@ -11,7 +20,7 @@ M=2;
     s=1500;   %Number of Samples
     G=300;
     c=25;
-
+end
 x=cities(1,:);
 y=cities(2,:);
 
@@ -25,7 +34,7 @@ end
 
 for k=1:1:G   %Begin of GA
 if mod(k,50)==1
-    k;
+    k
 end
 pop=chap10_2dis(pop);
 
@@ -43,7 +52,7 @@ end
 
 end   %End of GA
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-bestL=min(pop(:,t));
+bestL=min(pop(:,t))
 J=pop(:,t);
 fi=1./J;
 
